@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title{
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+  margin-bottom: 10px;
+  text-align:center;
+  width: 210px;
+  color:grey;
+  }
+
+  input[type="button"]
+  {
+  background-color:grey;
+  color: black;
+  width:300px
+  }
+
+  input[type="text"]
+  {
+  background-color:black;
+  color: black;
+
+  width:300px
+
+  }
+
+  #ham {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+
+  #result {
+    color: black
+  }
