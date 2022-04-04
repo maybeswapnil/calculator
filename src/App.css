@@ -19,7 +19,18 @@
 }
 
 .history {
-  height: 300px;
+  position: absolute;
+  height: 576px;
+  width: 576px;
   border:1px solid black;
   overflow: auto;
+  margin-top: -360px;
+  background-color: white;
+}
+
+
+#delete {
+  position:absolute;
+  bottom:10px;
+  right:10px;
 }

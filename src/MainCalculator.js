@@ -101,6 +101,10 @@ function MainCalculator() {
         setValue(m)
     }
 
+    function deleteHistory() {
+        setMemory([])
+    }
+
   return (
     <div className="App">
    
@@ -150,6 +154,7 @@ function MainCalculator() {
                   <p>{r}</p>
               )
           })}
+          <button id='delete' onClick={deleteHistory}>Delete</button>
       </div>:null}
    </body>
     </div>
