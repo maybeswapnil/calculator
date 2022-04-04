@@ -16,6 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
   margin-bottom: 10px;
+  margin: 0px;
   text-align:center;
   width: 210px;
   color:grey;
@@ -25,7 +26,7 @@ code {
   {
   background-color:grey;
   color: black;
-  width:300px
+  width:90px
   }
 
   input[type="text"]
@@ -33,7 +34,7 @@ code {
   background-color:black;
   color: black;
 
-  width:300px
+  width:90px
 
   }
 
@@ -46,4 +47,8 @@ code {
 
   #result {
     color: black
+  }
+
+  .calculator {
+    width: 300px;
   }

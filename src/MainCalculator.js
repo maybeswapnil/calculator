@@ -13,12 +13,15 @@ function MainCalculator() {
     }
 
     function addValues(e) {
-         
         // if(e.target.value in {'/':'/', '-':'-', '+':'+', '*':'*'}) {
         //     console.log('!!!!!!!')
 
         // }
         // else {
+            var l = value.join('');
+            var res = addbits(l);
+            setResult(res)
+
             var m = value;
             m.push(e.target.value)
             setG(!g)
@@ -26,6 +29,9 @@ function MainCalculator() {
             setValue(m)
 
         //}
+        var l = value.join('');
+        var res = addbits(l);
+        setResult(res)
         console.log(value)
         
     }
@@ -39,7 +45,6 @@ function MainCalculator() {
         m.push(value.join('') + ' = ' + res)
         setMemory(m)
         console.log(memory)
-
     }
 
     function addbits(expr) {
@@ -87,7 +92,6 @@ function MainCalculator() {
     function functionCE() {
         var m = value;
         setG(!g)
-
         for(var h = m.length-1;h>=0 ;h--) {
             if(value[h] in {'/':'/', '-':'-', '+':'+', '*':'*'}) {
                 m.pop()
@@ -96,7 +100,6 @@ function MainCalculator() {
                 m.pop()
                 console.log(m)
             }
-            
         }
         setValue(m)
     }
@@ -106,8 +109,7 @@ function MainCalculator() {
     }
 
   return (
-    <div className="App">
-   
+    <div className="calculator">
       <body>
       <div className='title'>Standard</div>
       <div onClick={historyFunction}>
@@ -117,7 +119,7 @@ function MainCalculator() {
       </div>
       <table border="1">
          <tr>
-            <td colspan="3"><p id='result'>{value.join('')||'Empty'}</p><p id='result'>{result}</p></td>
+            <td colspan="3"><p id='result'>{value.join('')||'Empty'}</p><p id='result'>{result||0}</p></td>
             <td><input type="button" value="c" onClick={clear}/>
             <input type="button" value="ce" onClick={functionCE}/>  </td>
          </tr>
