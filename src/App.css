@@ -18,19 +18,21 @@
   color: #61dafb;
 }
 
-.history {
-  position: absolute;
-  height: 576px;
-  width: 576px;
-  border:1px solid black;
-  overflow: auto;
-  margin-top: -360px;
-  background-color: white;
-}
 
 
 #delete {
-  position:absolute;
-  bottom:10px;
-  right:10px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
 }
+
+#hist {
+  height: 90%;
+  overflow: auto;
+}
+
+#clearButtons {
+
+  width: 33%;
+}
+

@@ -10,6 +10,9 @@ function MainCalculator() {
 
     function clear() {
         setValue([])
+       
+
+        setResult('')
     }
 
     function addValues(e) {
@@ -18,10 +21,6 @@ function MainCalculator() {
 
         // }
         // else {
-            var l = value.join('');
-            var res = addbits(l);
-            setResult(res)
-
             var m = value;
             m.push(e.target.value)
             setG(!g)
@@ -31,8 +30,9 @@ function MainCalculator() {
         //}
         var l = value.join('');
         var res = addbits(l);
-        setResult(res)
-        console.log(value)
+        if(!isNaN(res)) {
+            setResult(res)
+        }
         
     }
 
@@ -40,14 +40,19 @@ function MainCalculator() {
         var m = memory;
         var l = value.join('');
         var res = addbits(l);
-        console.log(res)
-        setResult(res)
-        m.push(value.join('') + ' = ' + res)
-        setMemory(m)
-        console.log(memory)
+        if(!isNaN(res)) {
+            setResult(res)
+            m.push(value.join('') + ' = ' + res)
+            setG(!g)
+    
+            setMemory(m)
+        }
+       
+       
     }
 
     function addbits(expr) {
+        console.log(expr)
         var chars = expr.split("");
         var n = [], op = [], index = 0, oplast = true;
         n[index] = "";
@@ -85,21 +90,54 @@ function MainCalculator() {
     }
 
     function historyFunction() {
-        console.log(history)
+        setG(!g)
         setHistory(!history)
+    }
+
+    function backFunction() {
+        var m = value;
+        m.pop()
+        setValue(m)
+        setG(!g)
+
+        var l = value.join('');
+        var res = addbits(l);
+        if(!isNaN(res)) {
+            setResult(res)
+        } 
+        else {
+            var g = [...value]
+            g.pop()
+            console.log(g)
+            var res = addbits(g.join(''));
+            console.log(res)
+
+            setResult(res)
+        }
+        setG(!g)
     }
 
     function functionCE() {
         var m = value;
         setG(!g)
+       
         for(var h = m.length-1;h>=0 ;h--) {
             if(value[h] in {'/':'/', '-':'-', '+':'+', '*':'*'}) {
-                m.pop()
+                var l = value.join('');
+                var res = addbits(l);
+                if(!isNaN(res)) {
+                    setResult(res)
+                }else {
+                    var g = [...value]
+                    g.pop()
+                    console.log(g)
+                    var res = addbits(g.join(''));
+                    console.log(res)
+        
+                    setResult(res)
+                }
                 break;
-            } else {
-                m.pop()
-                console.log(m)
-            }
+            } else m.pop()
         }
         setValue(m)
     }
@@ -110,18 +148,20 @@ function MainCalculator() {
 
   return (
     <div className="calculator">
-      <body>
+      <div id='width12'>
       <div className='title'>Standard</div>
       <div onClick={historyFunction}>
         <div id='ham'></div>
         <div id='ham'></div>
         <div id='ham'></div>
       </div>
-      <table border="1">
+
+      <table className='maintable' border="1">
          <tr>
-            <td colspan="3"><p id='result'>{value.join('')||'Empty'}</p><p id='result'>{result||0}</p></td>
-            <td><input type="button" value="c" onClick={clear}/>
-            <input type="button" value="ce" onClick={functionCE}/>  </td>
+            <td colSpan="3" id='maxwidth'><p id='result'>{value.join('')||'Empty'}</p><p id='result'>{result||0}</p></td>
+            <td ><input type="button" value="c" id='clearButtons' onClick={clear}/>
+            <input type="button" value="ce" id='clearButtons' onClick={functionCE}/>
+            <input type="button" value="<-" id='clearButtons' onClick={backFunction}/>   </td>
          </tr>
          <tr>
        
@@ -149,16 +189,22 @@ function MainCalculator() {
             <td><input type="button" value="*" onClick={(e) => addValues(e)}/> </td>
          </tr>
       </table>
+      </div>
+      <div>
       {history?<div className='history' style={{color: 'black'}}>
           <h3>History</h3>
+          <div id='hist'>
           {memory.map((r) => {
               return (
                   <p>{r}</p>
               )
           })}
+          {memory.length===0?<h3>No history found!</h3>:null}
+          </div>
           <button id='delete' onClick={deleteHistory}>Delete</button>
       </div>:null}
-   </body>
+      </div>
+
     </div>
   );
 }
