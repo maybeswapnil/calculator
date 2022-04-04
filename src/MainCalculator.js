@@ -158,7 +158,7 @@ function MainCalculator() {
 
       <table className='maintable' border="1">
          <tr>
-            <td colSpan="3" id='maxwidth'><p id='result'>{value.join('')||'Empty'}</p><p id='result'>{result||0}</p></td>
+            <td colSpan="3" id='maxwidth'><p id='result'>{value.join('')||'0'}</p><p id='result'>{result||0}</p></td>
             <td ><input type="button" value="c" id='clearButtons' onClick={clear}/>
             <input type="button" value="ce" id='clearButtons' onClick={functionCE}/>
             <input type="button" value="<-" id='clearButtons' onClick={backFunction}/>   </td>
@@ -191,7 +191,7 @@ function MainCalculator() {
       </table>
       </div>
       <div>
-      {history?<div className='history' style={{color: 'black'}}>
+      {history?<div className='history'>
           <h3>History</h3>
           <div id='hist'>
           {memory.map((r) => {

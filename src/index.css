@@ -67,6 +67,7 @@
   margin-left: 57px;
   height: 100%;
   width: 200%;
+  color: black;
   border:1px solid black;
   overflow: auto;
   background-color: white;
@@ -84,6 +85,7 @@
       margin-top: 160px;
       border:1px solid black;
       overflow: auto;
+      color: black;
       background-color: white;
     }
 
